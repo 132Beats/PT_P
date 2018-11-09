@@ -1,0 +1,16 @@
+Aufgabe 1:
+
+In einem Programm stehen folgende Zeilen:
+	long l=(long)Math.pow(3, 22);
+	int i = l;
+Funktioniert das Programm so? Wie können Sie es ändern, sodass es wenigstens ausführbar ist?
+Lassen Sie sich die Werte von i und l ausgeben. Was stellen Sie fest? Erklären Sie!
+
+Nein, das Programm funktioniert nicht, erst wenn man die long-Variable l in einen int castet. Lässt man sich die Werte ausgeben erhält man verschiedene Werte,
+ da die long-Variable l einen Wert beeinhaltet, der nicht im int-Datentyp dargestellt werden kann.
+
+
+Aufgabe 2
+
+Implementieren Sie den Gauß-Algorithmus mit Spaltenpivotisierung zur Lösung von linearen
+Gleichungssystemen der Form A x = b!

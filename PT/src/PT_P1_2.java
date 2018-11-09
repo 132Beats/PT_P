@@ -40,7 +40,6 @@ public class PT_P1_2 {
 			}
 			//tauschen
 			//eliminieren
-			
 		}
 	}
 }
