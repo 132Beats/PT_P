@@ -3,12 +3,9 @@ import java.util.*;
 	@version 1.0
 **/
 public class PT_P1_2 {
-	//int n;
-	//double[][] a; //[Zeile][Spalte]
-	//double[] b;
 	int n=3;
-	double[][] a = new double[n][n];
-	double[] b = new double[n];
+	double[][] a = new double[n][n]; //[Zeile][Spalte]
+	double[] b = new double[n]; //[Zeile]
 	PT_P1_2(){
 		a[0][0] = 1;
 		a[0][1] = 1;
@@ -30,43 +27,33 @@ public class PT_P1_2 {
 	public void gauss(){
 		for(int i=0;i<n;i++){
 			ausgabe();
-			//tauschpartner finden
-			int k=i;
-			double l=Math.abs(a[i][i]);
-			for(int j=i;j<n;j++){
-				if(Math.abs(a[j][i])>l){
-					l=Math.abs(a[j][i]);
-					k=j;
-				}
-			}
-			zeilentausch(k,i);
+			zeilentausch(i,tauschpartnerFinden(i));
 			ausgabe();
-			//auf 1 setzen
-			double teiler=a[i][i];
-			for(int q=i;q<n;q++){
-				a[i][q]=a[i][q]/teiler;
-			}
-			b[i]=b[i]/teiler;
-			//auf 0 setzen
-			for(int q=(i+1);q<n;q++) {
-				double factor=a[q][i];
-				for(int p=i;p<n;p++) {
-					a[q][p]=a[q][p]-(a[i][p]*factor);
-				}
-				b[q]=b[q]-(b[i]*factor);
-			}
+			auf1setzen(i);
+			ausgabe();
+			unterhalbAuf0setzen(i);
 		}
-		//rückwärts
 		ausgabe();
 		for(int q=n-2;q>=0;q--) {
-			for(int p=q+1;p<n;p++) {
-				b[q]=b[q]-(a[q][p]*b[p]);
-				a[q][p]=0;
-			}
+			rechtsAuf0setzen(q);
+			ausgabe();
 		}
-		ausgabe();
 	}
 
+/**	@param spalte In dieser Spalte soll das Betragshöchste Element gesucht werden
+**/
+	public int tauschpartnerFinden(int spalte) {
+		int k=spalte;
+		double l=Math.abs(a[spalte][spalte]);
+		for(int j=spalte;j<n;j++){
+			if(Math.abs(a[j][spalte])>l){
+				l=Math.abs(a[j][spalte]);
+				k=j;
+			}
+		}
+		return k;
+	}
+	
 /**	@param zeileA erste Zeile die getauscht werden soll
  * 	@param zeileB zweite Zeile die getauscht werden soll
 	@exception gleicheZeile Du kannst keine Zeile mit sich selber tauschen!
@@ -96,6 +83,39 @@ public class PT_P1_2 {
 			b[zeileB]=tempB;
 		}
 	}
+	
+	/**	@param zeile Dieser Zeile soll so faktorisiert werden, dass das Element der Diagonalen 1 wird.
+	**/
+		public void auf1setzen(int zeile) {
+			double teiler=a[zeile][zeile];
+			for(int q=zeile;q<n;q++){
+				a[zeile][q]=a[zeile][q]/teiler;
+			}
+			b[zeile]=b[zeile]/teiler;
+		}
+
+		/**	@param spalte Um in dieser Spalte die Elemente, die unter der Diagonalen liegen auf 0 zu bringen, werden Zeilen faktorisiert und subtrahiert.
+		**/
+		public void unterhalbAuf0setzen(int spalte) {
+			for(int q=(spalte+1);q<n;q++) {
+				double factor=a[q][spalte];
+				for(int p=spalte;p<n;p++) {
+					a[q][p]=a[q][p]-(a[spalte][p]*factor);
+				}
+				b[q]=b[q]-(b[spalte]*factor);
+			}
+		}
+
+		/**	@param zeile Um in dieser Zeile die Elemente, die rechts von der Diagonalen liegen auf 0 zu bringen, werden bereits errechnete Werte eingesetzt und umgeformt.
+		**/
+		
+		public void rechtsAuf0setzen(int zeile) {
+			for(int p=zeile+1;p<n;p++) {
+				b[zeile]=b[zeile]-(a[zeile][p]*b[p]);
+				a[zeile][p]=0;
+			}
+		}
+				
 	public void ausgabe() {
 		for(int q=0;q<n;q++) {
 			for(int p=0;p<n;p++) {
