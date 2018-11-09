@@ -25,6 +25,7 @@ public class PT_P1_2 {
 		PT_P1_2 pt1_2=new PT_P1_2();
 	}
 	public void gauss(){
+		System.out.println("Startmatrix:");
 		for(int i=0;i<n;i++){
 			ausgabe();
 			zeilentausch(i,tauschpartnerFinden(i));
@@ -38,9 +39,11 @@ public class PT_P1_2 {
 			rechtsAuf0setzen(q);
 			ausgabe();
 		}
+		lösen();
 	}
 
-/**	@param spalte In dieser Spalte soll das Betragshöchste Element gesucht werden
+/**	@param spalte In dieser Spalte soll das Betragshöchste Element gesucht werden.
+ * 	@return Gibt den Index der zu tauschenden Spalte zurück.
 **/
 	public int tauschpartnerFinden(int spalte) {
 		int k=spalte;
@@ -87,6 +90,7 @@ public class PT_P1_2 {
 	/**	@param zeile Dieser Zeile soll so faktorisiert werden, dass das Element der Diagonalen 1 wird.
 	**/
 		public void auf1setzen(int zeile) {
+			System.out.println("Zeile "+zeile+" faktorisiert.");
 			double teiler=a[zeile][zeile];
 			for(int q=zeile;q<n;q++){
 				a[zeile][q]=a[zeile][q]/teiler;
@@ -97,6 +101,7 @@ public class PT_P1_2 {
 		/**	@param spalte Um in dieser Spalte die Elemente, die unter der Diagonalen liegen auf 0 zu bringen, werden Zeilen faktorisiert und subtrahiert.
 		**/
 		public void unterhalbAuf0setzen(int spalte) {
+			System.out.println("Spalte "+spalte+" genullt.");
 			for(int q=(spalte+1);q<n;q++) {
 				double factor=a[q][spalte];
 				for(int p=spalte;p<n;p++) {
@@ -110,6 +115,7 @@ public class PT_P1_2 {
 		**/
 		
 		public void rechtsAuf0setzen(int zeile) {
+			System.out.println("Zeile "+zeile+" genullt.");
 			for(int p=zeile+1;p<n;p++) {
 				b[zeile]=b[zeile]-(a[zeile][p]*b[p]);
 				a[zeile][p]=0;
@@ -121,8 +127,14 @@ public class PT_P1_2 {
 			for(int p=0;p<n;p++) {
 				System.out.print(a[q][p]+"  ");
 			}
-			System.out.println(b[q]);
+			System.out.println("  "+b[q]);
 		}
 		System.out.print("\n");
+	}
+	public void lösen() {
+		System.out.println("Lösungsvektor:");
+		for(int q=0;q<n;q++) {
+			System.out.println(b[q]);
+		}
 	}
 }
