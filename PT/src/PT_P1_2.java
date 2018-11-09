@@ -103,6 +103,6 @@ public class PT_P1_2 {
 			}
 			System.out.println(b[q]);
 		}
-		System.out.print("\n\n\n");
+		System.out.print("\n");
 	}
 }
