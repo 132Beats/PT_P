@@ -92,10 +92,15 @@ public class PT_P1_2 {
 		public void auf1setzen(int zeile) {
 			System.out.println("Zeile "+zeile+" faktorisiert.");
 			double teiler=a[zeile][zeile];
-			for(int q=zeile;q<n;q++){
-				a[zeile][q]=a[zeile][q]/teiler;
+			if(teiler!=0) {
+				for(int q=zeile;q<n;q++){
+					a[zeile][q]=a[zeile][q]/teiler;
+				}
+				b[zeile]=b[zeile]/teiler;
 			}
-			b[zeile]=b[zeile]/teiler;
+			else {
+				System.out.println("Durch 0 teilen ist nicht drin.");
+			}
 		}
 
 		/**	@param spalte Um in dieser Spalte die Elemente, die unter der Diagonalen liegen auf 0 zu bringen, werden Zeilen faktorisiert und subtrahiert.
