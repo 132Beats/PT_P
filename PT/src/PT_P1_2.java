@@ -6,6 +6,8 @@ public class PT_P1_2 {
 	int n=3;
 	double[][] a = new double[n][n]; //[Zeile][Spalte]
 	double[] b = new double[n]; //[Zeile]
+	boolean lösbar=true;
+	
 	PT_P1_2(){
 		a[0][0] = 1;
 		a[0][1] = 1;
@@ -24,6 +26,9 @@ public class PT_P1_2 {
 	public static void main(String[] args) {
 		PT_P1_2 pt1_2=new PT_P1_2();
 	}
+	/**
+	 * Diese Methode führt den Gauss-Algorithmus durch
+	 **/
 	public void gauss(){
 		System.out.println("Startmatrix:");
 		for(int i=0;i<n;i++){
@@ -42,7 +47,8 @@ public class PT_P1_2 {
 		lösen();
 	}
 
-/**	@param spalte In dieser Spalte soll das Betragshöchste Element gesucht werden.
+/**	Diese Methode errechnet den Tauschpartner zu der aktuellen Spalte, um die Spaltenpivotisierung durchzuführen.
+ * @param spalte In dieser Spalte soll das Betragshöchste Element gesucht werden.
  * 	@return Gibt den Index der zu tauschenden Spalte zurück.
 **/
 	public int tauschpartnerFinden(int spalte) {
@@ -57,7 +63,8 @@ public class PT_P1_2 {
 		return k;
 	}
 	
-/**	@param zeileA erste Zeile die getauscht werden soll
+/**	Hier wird die Spalten für die Pivotisierung durchgeführt.
+ * 	@param zeileA erste Zeile die getauscht werden soll
  * 	@param zeileB zweite Zeile die getauscht werden soll
 	@exception gleicheZeile Du kannst keine Zeile mit sich selber tauschen!
 	@exception ZeilenIOOB ZeilenIndex out of Bounds!
@@ -87,7 +94,8 @@ public class PT_P1_2 {
 		}
 	}
 	
-	/**	@param zeile Dieser Zeile soll so faktorisiert werden, dass das Element der Diagonalen 1 wird.
+	/**	In dieser Methode wird die übergebene Zeile so faktorisiert, dass das Element der Diagonalen 1 wird.
+	 * @param zeile Dieser Zeile soll so faktorisiert werden, dass das Element der Diagonalen 1 wird.
 	**/
 		public void auf1setzen(int zeile) {
 			System.out.println("Zeile "+zeile+" faktorisiert.");
@@ -100,10 +108,12 @@ public class PT_P1_2 {
 			}
 			else {
 				System.out.println("Durch 0 teilen ist nicht drin.");
+				lösbar=false;
 			}
 		}
 
-		/**	@param spalte Um in dieser Spalte die Elemente, die unter der Diagonalen liegen auf 0 zu bringen, werden Zeilen faktorisiert und subtrahiert.
+		/**	Um in der übergebenen Spalte die Elemente, die unter der Diagonalen liegen auf 0 zu bringen, werden Zeilen faktorisiert und subtrahiert.
+		 * @param spalte Um in dieser Spalte die Elemente, die unter der Diagonalen liegen auf 0 zu bringen, werden Zeilen faktorisiert und subtrahiert.
 		**/
 		public void unterhalbAuf0setzen(int spalte) {
 			System.out.println("Spalte "+spalte+" genullt.");
@@ -116,7 +126,8 @@ public class PT_P1_2 {
 			}
 		}
 
-		/**	@param zeile Um in dieser Zeile die Elemente, die rechts von der Diagonalen liegen auf 0 zu bringen, werden bereits errechnete Werte eingesetzt und umgeformt.
+		/**	Um in der übergebenen Zeile die Elemente, die rechts von der Diagonalen liegen auf 0 zu bringen, werden bereits errechnete Werte eingesetzt und umgeformt.
+		 * @param zeile Um in dieser Zeile die Elemente, die rechts von der Diagonalen liegen auf 0 zu bringen, werden bereits errechnete Werte eingesetzt und umgeformt.
 		**/
 		
 		public void rechtsAuf0setzen(int zeile) {
@@ -126,7 +137,9 @@ public class PT_P1_2 {
 				a[zeile][p]=0;
 			}
 		}
-				
+		/**
+		 * Hier findet eine Ausgabe der aktuellen Matrix statt.		
+		 */
 	public void ausgabe() {
 		for(int q=0;q<n;q++) {
 			for(int p=0;p<n;p++) {
@@ -136,10 +149,18 @@ public class PT_P1_2 {
 		}
 		System.out.print("\n");
 	}
+	/**
+	 * Hier wird das Ergebnis des Gauss-Algorithmus ausgegeben.		
+	 */
 	public void lösen() {
-		System.out.println("Lösungsvektor:");
-		for(int q=0;q<n;q++) {
-			System.out.println(b[q]);
+		if(lösbar) {
+			System.out.println("Lösungsvektor:");
+			for(int q=0;q<n;q++) {
+				System.out.println(b[q]);
+			}
+		}
+		else {
+			System.out.println("Das GS ist nicht lösbar.");
 		}
 	}
 }
