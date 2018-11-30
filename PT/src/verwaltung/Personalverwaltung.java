@@ -2,6 +2,8 @@ package verwaltung;
 
 import java.util.ArrayList;
 
+import personal.Manager;
+import personal.Mitarbeiter;
 import personal.Personal;
 
 public class Personalverwaltung {
@@ -9,6 +11,8 @@ public class Personalverwaltung {
 	
 	Personalverwaltung(){
 		personas=new ArrayList<Personal>();
+		personas.add(new Mitarbeiter("Schmeink",650,"1.1.2000",0));
+		personas.add(new Manager("Graffe",850,"1.1.2008",0));
 	}
 	
 	public static void main(String[] args) {
@@ -16,10 +20,12 @@ public class Personalverwaltung {
 	}
 
 	public boolean istDoppelt() {
-		for(int i=0;personas.get(i)!=null;i++) {
-			for(int j=i+1;personas.get(j)!=null;j++) {
-				if(personas.get(i).toString().equals(personas.get(j).toString())) {
-					return false;
+		if(!personas.isEmpty()) {
+			for(int i=0;personas.get(i)!=null;i++) {
+				for(int j=i+1;personas.get(j)!=null;j++) {
+					if(personas.get(i).toString().equals(personas.get(j).toString())) {
+						return false;
+					}
 				}
 			}
 		}
@@ -27,8 +33,10 @@ public class Personalverwaltung {
 	}
 	
 	public void ausgabe() {
-		for(int i=0;personas.get(i)!=null;i++) {
-			System.out.println(personas.get(i).toString());
+		if(!personas.isEmpty()) {
+			for(int i=0;personas.get(i)!=null;i++) {
+				System.out.println(personas.get(i).toString());
+			}
 		}
 	}
 	public Personal highest() {
@@ -36,13 +44,11 @@ public class Personalverwaltung {
 			return null;
 		}
 		else {
-			int max=personas.get(0).getMoney();
 			int index=0;
 			int i=0;
 			for(i=0;personas.get(i)!=null;i++) {
 				if(personas.get(index).getMoney()<personas.get(i).getMoney()) {
 					index=i;
-					max=personas.get(i).getMoney();
 				}
 			}
 			return personas.get(i);
@@ -53,13 +59,11 @@ public class Personalverwaltung {
 			return null;
 		}
 		else {
-			int min=personas.get(0).getMoney();
 			int index=0;
 			int i=0;
 			for(i=0;personas.get(i)!=null;i++) {
 				if(personas.get(index).getMoney()>personas.get(i).getMoney()) {
 					index=i;
-					min=personas.get(i).getMoney();
 				}
 			}
 			return personas.get(i);
