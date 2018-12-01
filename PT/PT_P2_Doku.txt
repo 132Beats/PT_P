@@ -1,0 +1,21 @@
+2. Praktikum
+Aufgabe 1:
+Die Klasse GregorianCalendar stellt alle nötigen Informationen bereit. Das Feld ZONE_OFFSET gibt Informationen, um zu unterscheiden,
+ob man sich in Deutschland oder den USA befindet. Das ist keine perfekte Lösung, da es nur Informationen über die Zeitzone gibt und nicht über das Land.
+
+Die Ausgabe für den 25.11.2018 sieht für DE und die USA wie folgend aus:
+
+Mo    Di    Mi    Do    Fr    Sa    So
+                   1     2     3     4    
+ 5     6     7     8     9    10    11    
+12    13    14    15    16    17    18    
+19    20    21    22    23    24    25*   
+26    27    28    29    30    
+
+
+Su    Mo    Tu    We    Th    Fr    Sa
+                         1     2     3    
+ 4     5     6     7     8     9    10    
+11    12    13    14    15    16    17    
+18    19    20    21    22    23    24    
+25*   26    27    28    29    30  
