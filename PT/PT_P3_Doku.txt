@@ -1,39 +1,19 @@
 Aufgabe 1:
 
-In einem Programm stehen folgende Zeilen:
-	long l=(long)Math.pow(3, 22);
-	int i = l;
-Funktioniert das Programm so? Wie können Sie es ändern, sodass es wenigstens ausführbar ist?
-Lassen Sie sich die Werte von i und l ausgeben. Was stellen Sie fest? Erklären Sie!
-
+1. Warum ist meineMethode() in der Subklasse sichtbar?
 ###########################
-Nein, das Programm funktioniert nicht, erst wenn man die long-Variable l in einen int castet. Lässt man sich die Werte ausgeben erhält man verschiedene Werte,
- da die long-Variable l einen Wert beeinhaltet, der nicht im int-Datentyp dargestellt werden kann.
+Weil sie meineMethode() von ihrer Superklasse durch "extends" erbt.
 ###########################
-
+2. Was können Sie tun, um zu erreichen, dass diese Methode dort unsichtbar ist, ohne der
+Klasse oder der Methode einen anderen Zugriffsmodifikator zu geben?
+###########################
+Indem man ihr das Erbe nimmt, indem man den extends-Aufruf löscht.
+###########################
+
 Aufgabe 2:
 
-Implementieren Sie den Gauß-Algorithmus mit Spaltenpivotisierung zur Lösung von linearen
-Gleichungssystemen der Form A x = b!
-
-###########################
-Der Algorithmus ist in PT_P1_2.java implementiert und die main-Methode führt ihn mit einer vorgefertigten Matrix aus. Die Augabe erfolgt in der Console.
+Erstellen Sie aus dem Paket personal ein Java-Archiv (JAR), dito für die Klasse für die
+Personalverwaltung. Wie können Sie nun an der Kommandozeile Ihr Programm aufrufen?
 ###########################
 
-Aufgabe 3:
-
-Dokumentieren Sie die in Aufgabe 2 erstellte Klasse sowie Ihre Methoden mittels Javadoc in HTML!
-Berücksichtigen Sie Schlüssel wie Autor, Parameter, Rückgabewerte, sofern möglich.
-
-###########################
-Das javadoc heißt PT_P1_2.html.
-###########################
-
-Aufgabe 4:
-
-Schließen Sie Eclipse. Erzeugen Sie den Bytecode und die Dokumentation Ihres Programmes an der
-Kommandozeile!
-
-###########################
-Ich hab versucht die Aufgabe in der jshell zu bewältigen, dies scheiterte jedoch an fehlender Umgangserfahrung an Konsolen.
 ###########################
