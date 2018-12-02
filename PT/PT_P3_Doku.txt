@@ -12,8 +12,8 @@ Indem man ihr das Erbe nimmt, indem man den extends-Aufruf löscht.
 
 Aufgabe 2:
 
-Erstellen Sie aus dem Paket personal ein Java-Archiv (JAR), dito für die Klasse für die
-Personalverwaltung. Wie können Sie nun an der Kommandozeile Ihr Programm aufrufen?
 ###########################
-
+Die Klassen Manager und Mitarbeiter erben die Felder Name, Gehalt, Einstellungsdatum, Personal-ID von der Klasse Personal.
+Die Klasse Personalverwaltung aus dem Package Verwaltung erstellt und verwaltet Instanzen der Klassen aus dem package Personal.
+Das Package Personal wird als .jar und das Package Verwaltung als runnable-jar exportiert. Diese ist mit dem Befehl "java -jar Verwaltung.jar" im Terminal gestartet.
 ###########################
