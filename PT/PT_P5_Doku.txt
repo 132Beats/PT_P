@@ -1,0 +1,18 @@
+
+1. Erweitern sie das Programm um selbst definierte Interfaces, die die Verarbeitung bestimmter
+Eigenschaften von Mitarbeitern standardisieren sollen (z.B. Kleidergrößen, Leibspeisen,
+Weihnachts-Wunschzettel, Haarfarbe, ...).
+###########################
+Die abstrakte Klasse Personal implementiert die Interfaces Comparable<Personal>, das das Gehalt vergleicht, sowie ein neues Interface ComparablePersonal, welches die Kleidergrößen von Personal vergleicht.
+Die durch die Interfaces garantierten Methoden kann man geschickt mit Lambda-Ausdrücken nutzen:
+	personas.sort((e1,e2) -> e1.compareTo(e2));
+	personas.sort((e1,e2) -> e1.comparePersonal(e2));
+###########################
+
+2. Können Sie Eigenschaftsausprägungen im Interface speichern? Wenn nicht, was können Sie
+dann mit Feldern erreichen, die im Interface verankert sind? Was passiert, wenn sie dort ein
+Feld z.B. als int test = 5 deklarieren, diesen Wert aber in der Klasse, die das Interface
+implementiert, verändern wollen?
+###########################
+Klassen, die Interfaces implementieren, erben auch deren Felder, allerdings sind diese für sie "final" also nicht überschreibbar.
+###########################

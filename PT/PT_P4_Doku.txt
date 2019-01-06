@@ -1,0 +1,31 @@
+Schreiben Sie einen "Klassenbrowser", also ein Programm, das als Parameter einen Klassennamen
+an der Kommandozeile oder per Abfrage entgegen nimmt und dann zur Laufzeit folgende
+Eigenschaften der Klasse ausgibt:
+? Name der Klasse, falls gefunden
+? Superklasse, falls existent
+? Konstruktoren der Klasse zzgl. der Modifier und Parametertypen
+? Methoden der Klasse zzgl. der Modifier, Parametertypen und des Rückgabetyps
+? Felder der Klasse
+###########################
+Das Programm wurde innerhalb der Datei PT_P4.java implementiert. Es wird eine Eingabe eines Klassennames gefordert. Bespielhafte Ausgabe für java.lang.String:
+
+Klassennamen eingeben:
+java.lang.String
+Class: java.lang.String
+Superclass: java.lang.Object
+Constructors:
+public java.lang.String(byte[])
+public java.lang.String(byte[],int,int)
+public java.lang.String(byte[],java.nio.charset.Charset)
+...
+Methods:
+byte[] java.lang.String.value()
+public boolean java.lang.String.equals(java.lang.Object)
+public int java.lang.String.length()
+...
+Fields:
+private final byte[] java.lang.String.value
+private final byte java.lang.String.coder
+private int java.lang.String.hash
+...
+###########################
