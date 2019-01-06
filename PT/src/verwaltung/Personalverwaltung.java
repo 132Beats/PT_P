@@ -1,26 +1,22 @@
 package verwaltung;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import personal.Manager;
 import personal.Mitarbeiter;
 import personal.Personal;
 
 public class Personalverwaltung {
-	ArrayList<Personal> personas;
+	HashMap<Integer, Personal> personas;
 	
 	Personalverwaltung(){
-		personas=new ArrayList<Personal>();
-		personas.add(new Mitarbeiter("Schmeink",650,"1.1.2000",168,0));
-		personas.add(new Manager("Graffe",850,"1.1.2008",170,1));
-		personas.add(new Mitarbeiter("Schmitz",600,"1.1.2001",166,2));
-		personas.add(new Manager("Hans",800,"1.1.2007",180,3));
+		personas=new HashMap<Integer,Personal>();
+		personas.putIfAbsent(0,new Mitarbeiter("Schmeink",650,"1.1.2000",168,0));
+		personas.putIfAbsent(1,new Manager("Graffe",850,"1.1.2008",170,1));
+		personas.putIfAbsent(2,new Mitarbeiter("Schmitz",600,"1.1.2001",166,2));
+		personas.putIfAbsent(3,new Manager("Hans",800,"1.1.2007",180,3));
 		ausgabe();
-		System.out.println("Sortiert nach Gehalt:");
-		personas.sort((e1,e2) -> e1.compareTo(e2));
-		ausgabe();
-		personas.sort((e1,e2) -> e1.comparePersonal(e2));
-		System.out.println("Sortiert nach Kleidergröße:");
 	}
 	
 	public static void main(String[] args) {
@@ -59,10 +55,8 @@ public class Personalverwaltung {
 	}
 	
 	public void ausgabe() {
-		if(!personas.isEmpty()) {
-			for(int i=0;personas.size()>i;i++) {
-				System.out.println(personas.get(i).toString());
-			}
+		for(Entry<Integer, Personal> entry : personas.entrySet()) {
+			System.out.println(entry.getValue().toString());
 		}
 	}
 	public Personal highest() {
