@@ -1,10 +1,9 @@
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.TreeSet;
 
-	public class TextAnalyser {
+public class TextAnalyser {
 	
 	public static void main(String[] args) {
 		analyse();
@@ -23,5 +22,3 @@ import java.util.TreeSet;
 	}
 
 }
-import java.util.ArrayList;
-
