@@ -21,7 +21,7 @@ public class Personalverwaltung {
 
 	public boolean istDoppelt() {
 		if(!personas.isEmpty()) {
-			for(int i=0;personas.get(i)!=null;i++) {
+			for(int i=0;personas.size()<i;i++) {
 				for(int j=i+1;personas.get(j)!=null;j++) {
 					if(personas.get(i).toString().equals(personas.get(j).toString())) {
 						return false;
@@ -31,10 +31,18 @@ public class Personalverwaltung {
 		}
 		return true;
 	}
-	
+	public void givePair() {
+		if(!personas.isEmpty()) {
+			Personal klein = personas.get(0);
+			Personal groß = personas.get(0);
+			for(int i=0;personas.size()<i;i++) {
+				
+			}
+		}
+	}
 	public void ausgabe() {
 		if(!personas.isEmpty()) {
-			for(int i=0;personas.get(i)!=null;i++) {
+			for(int i=0;personas.size()<i;i++) {
 				System.out.println(personas.get(i).toString());
 			}
 		}
@@ -46,7 +54,7 @@ public class Personalverwaltung {
 		else {
 			int index=0;
 			int i=0;
-			for(i=0;personas.get(i)!=null;i++) {
+			for(i=0;personas.size()<i;i++) {
 				if(personas.get(index).getMoney()<personas.get(i).getMoney()) {
 					index=i;
 				}
@@ -61,7 +69,7 @@ public class Personalverwaltung {
 		else {
 			int index=0;
 			int i=0;
-			for(i=0;personas.get(i)!=null;i++) {
+			for(i=0;personas.size()<i;i++) {
 				if(personas.get(index).getMoney()>personas.get(i).getMoney()) {
 					index=i;
 				}
