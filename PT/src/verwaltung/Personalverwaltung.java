@@ -26,6 +26,7 @@ public class Personalverwaltung {
 	public static void main(String[] args) {
 		Personalverwaltung p=new Personalverwaltung();
 		p.ausgabe();
+		System.out.println(p.givePair().toString());
 	}
 
 	public boolean istDoppelt() {
@@ -39,6 +40,22 @@ public class Personalverwaltung {
 			}
 		}
 		return true;
+	}
+	public Pair<Personal> givePair() {
+		Personal klein = null, groﬂ = null;
+		if(!personas.isEmpty()) {
+			klein = personas.get(0);
+			groﬂ = personas.get(0);
+			for(int i=0;personas.size()<i;i++) {
+				if(personas.get(i).getMoney()>groﬂ.getMoney()) {
+					groﬂ=personas.get(i);
+				}
+				else if(personas.get(i).getMoney()<klein.getMoney()) {
+					klein=personas.get(i);
+				}
+			}
+		}
+		return new Pair<Personal>(klein,groﬂ);
 	}
 	
 	public void ausgabe() {
