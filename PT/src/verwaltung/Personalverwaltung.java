@@ -10,7 +10,7 @@ import personal.Personal;
 public class Personalverwaltung {
 	HashMap<Integer, Personal> personas;
 	
-	Personalverwaltung(){
+	public Personalverwaltung(){
 		personas=new HashMap<Integer,Personal>();
 		personas.putIfAbsent(0,new Mitarbeiter("Schmeink",650,"1.1.2000",168,0));
 		personas.putIfAbsent(1,new Manager("Graffe",850,"1.1.2008",170,1));
@@ -88,5 +88,8 @@ public class Personalverwaltung {
 			}
 			return personas.get(i);
 		}
+	}
+	public String[] getPersonas() {
+		return null;
 	}
 }
