@@ -1,6 +1,7 @@
 package verwaltung;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map.Entry;
 
 import personal.Manager;
@@ -8,6 +9,7 @@ import personal.Mitarbeiter;
 import personal.Personal;
 
 public class Personalverwaltung {
+	final static String DIGITS="0123456789";
 	HashMap<Integer, Personal> personas;
 	
 	public Personalverwaltung(){
@@ -90,6 +92,44 @@ public class Personalverwaltung {
 		}
 	}
 	public String[] getPersonas() {
-		return null;
+		Iterator<Personal> it = personas.values().iterator();
+		String[] str = new String[personas.size()];
+		for(int i = 0;it.hasNext();i++) {
+			str[i] = it.next().toString();
+		}
+		return str;
+	}
+	public boolean löschen(String zl) {
+		int i = 0;
+		Iterator<Integer> it =personas.keySet().iterator();
+		while(it.hasNext()) {
+			i=it.next();
+			if(zl.equals(personas.get(i).toString())) {
+				personas.remove(i);
+				break;
+			}
+		}
+		ausgabe();
+		return true;
+	}
+	public boolean einstellen(boolean isMit,String nam, String geb, String gehalt) {
+		int i;
+		for(i=0;personas.containsKey(i);i++) {
+		}
+		if(isMit) {
+			personas.put(i,new Mitarbeiter(nam,stringtoint(gehalt),geb,-1,i));
+		}
+		else {
+			personas.put(i,new Manager(nam,stringtoint(gehalt),geb,-1,i));
+		}
+		return true;
+	}
+	public static int stringtoint(String strin) {
+		int j=0;
+		for(int i=0;i<strin.length();i++) {
+			j=j*10;
+			j=j+DIGITS.indexOf(strin.charAt(i));
+		}
+		return j;
 	}
 }
